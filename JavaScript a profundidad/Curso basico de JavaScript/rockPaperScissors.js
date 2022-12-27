@@ -10,16 +10,16 @@ function userOption() {
 function rockPaperScissors(user, machine) {
     switch (true) {
         case (user === machine):
-            console.log('es un empate');
+            console.log('¡Empate!');
             break;
         case (machine === 'piedra' && user === 'papel'):
-            console.log('Ganaste')
+            console.log('¡Ganaste!')
             break;
         case (machine === 'papel'  && user === 'tijera'):
-            console.log('Ganaste')
+            console.log('¡Ganaste!')
             break;
         case (machine === 'tijera' && user === 'piedra'):
-            console.log('Ganaste')
+            console.log('¡Ganaste!')
             break;
         default:
             console.log('¡Perdiste!');       
