@@ -72,3 +72,15 @@ function* getId2() {
 
 const id2 = getId2();
 console.log(id2.next().value);
+
+/* ****************************************************** */
+
+function* getId3() {
+    // let r = (Math.random() + 1).toString(36).substring(7);
+    let r = 0;
+    while (true) {
+        // yield r;
+        yield r++;
+        r = (Math.random() + 1).toString(36).substring(7);
+    }
+}
