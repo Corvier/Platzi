@@ -27,4 +27,6 @@ try {
 } catch {
   // Manejar el error sin el parámetro.
 }
+
+Aunque siempre es recomendable manejar el error como parámetro, ya que tiene más información del problema.
 */
