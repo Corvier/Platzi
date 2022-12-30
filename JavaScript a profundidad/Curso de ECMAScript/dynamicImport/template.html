@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+        <head>
+            <meta charset="utf-8"> <!-- utf-8 trabaja para la mayoría de los casos -->
+            <meta name="viewport" content="width=device-width"> <!-- Forzar escala inicial no debería ser necesario -->
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use la última versión (Edge) del motor de renderizado IE -->
+            <meta name="x-apple-disable-message-reformatting">  <!-- Deshabilita la escala automática en iOS 10 Mail por completo -->
+            <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!--Dígale a iOS que no enlace automáticamente ciertas cadenas de texto. -->
+            
+            <style>
+                html,
+                body {
+                    margin: 0 auto !important;
+                    padding: 0 !important;
+                    height: 100% !important;
+                    width: 100% !important;
+                }
+                
+                * {
+                    -ms-text-size-adjust: 100%;
+                    -webkit-text-size-adjust: 100%;
+                }
+
+                div[style*="margin: 16px 0"] {
+                    margin: 0 !important;
+                }
+                
+                #MessageViewBody, #MessageWebViewDiv{
+                    width: 100% !important;
+                }
+                
+                table,
+                td {
+                    mso-table-lspace: 0pt !important;
+                    mso-table-rspace: 0pt !important;
+                }
+                
+                table {
+                    border-spacing: 0 !important;
+                    border-collapse: collapse !important;
+                    table-layout: fixed !important;
+                    margin: 0 auto !important;
+                }
+                
+                img {
+                    -ms-interpolation-mode:bicubic;
+                }
+
+                a {
+                    text-decoration: none;
+                }
+                
+                a[x-apple-data-detectors],
+                .unstyle-auto-detected-links a,
+                .aBn {
+                    border-bottom: 0 !important;
+                    cursor: default !important;
+                    color: inherit !important;
+                    text-decoration: none !important;
+                    font-size: inherit !important;
+                    font-family: inherit !important;
+                    font-weight: inherit !important;
+                    line-height: inherit !important;
+                }
+                
+                .im {
+                    color: inherit !important;
+                }
+                
+                .a6S {
+                    display: none !important;
+                    opacity: 0.01 !important;
+                }
+                
+                img.g-img + div {
+                    display: none !important;
+                }
+                
+                @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+                    u ~ div .email-container {
+                        min-width: 320px !important;
+                    }
+                }
+                
+                @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+                    u ~ div .email-container {
+                        min-width: 375px !important;
+                    }
+                }
+                
+                @media only screen and (min-device-width: 414px) {
+                    u ~ div .email-container {
+                        min-width: 414px !important;
+                    }
+                }
+            </style>
+            
+            <style>
+                .button-td,
+                .button-a {
+                    transition: all 100ms ease-in;
+                }
+                .button-td-primary:hover,
+                .button-a-primary:hover {
+                    background: #555555 !important;
+                    border-color: #555555 !important;
+                }
+                
+                @media screen and (max-width: 480px) {
+                    .stack-column,
+                    .stack-column-center {
+                        display: block !important;
+                        width: 100% !important;
+                        max-width: 100% !important;
+                        direction: ltr !important;
+                    }
+                    
+                    .stack-column-center {
+                        text-align: center !important;
+                    }
+
+                    .center-on-narrow {
+                        text-align: center !important;
+                        display: block !important;
+                        margin-left: auto !important;
+                        margin-right: auto !important;
+                        float: none !important;
+                    }
+                    table.center-on-narrow {
+                        display: inline-block !important;
+                    }
+                    
+                    .email-container p {
+                        font-size: 17px !important;
+                    }
+                }
+
+            </style>
+        </head>
+        
+        <body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222">
+            <center style="width: 100%;">
+                <div style="max-width: 680px; margin: 0 auto;" class="email-container">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+                        <tr>
+                            <td style="padding: 10px 0; text-align: center"></td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #3d5e9c; padding: 20px 0; text-align: center; height: 150px;">
+                                <img src="https://images.squarespace-cdn.com/content/v1/57be42539f74567b80052d45/1472176872623-2339IXNSGGFZUAUYM2W1/OCS+Logo.png" width="600" height="" alt="Oclinicasl" style="margin: auto; width: 100%; max-width: 600px; height: auto;" class="g-img">
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td style="background-color: #ffffff;">
+                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                    <tr>
+                                        <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                            <h2 style="margin: 0 0 10px; font-size: 30px; line-height: 30px; color: #128BA6; font-weight: bold;">
+                                                Credentials and Tools
+                                            </h2>
+                                            <p style="margin: 0 0 10px;">
+                                                %greeting name%,<br><br>
+                                                %greeting%
+                                                <!-- Dear Cesar Montoya,<br/><br/>
+                                                Best regards from the Oclinicals IT team, we hope you are having a good 
+                                                learning process. The reason for this email is to provide the links to your 
+                                                tools, and your credentials, if you need help setting them up, please fill 
+                                                out this form <a href="http://support.oclinicals.com/" target="_blank" rel="noopener noreferrer">Support Oclinicals</a>, and someone from our team 
+                                                will contact you, thanks. -->
+                                            </p>
+                                            <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">
+                                                %formTitle%
+                                                <!-- Please save the links below in your browser bookmarks (favorite links): -->
+                                            </h3>
+                                            <ul style="padding: 0; margin: 0; list-style-type: disc;">
+                                                <li style="margin:0 0 10px 30px;" class="list-item-first">
+                                                    <p style="margin: 0 0 10px;">
+                                                        %formIntroduction%
+                                                        <!-- Support request form: <a href="http://support.oclinicals.com/" target="_blank" rel="noopener noreferrer">http://support.oclinicals.com/</a><br>
+                                                        Notes: Fill out this form if you need help from Oclinicals IT to 
+                                                        troubleshoot an issue on your computer. -->
+                                                    </p>
+                                                </li>
+                                                <li style="margin:0 0 10px 30px;">
+                                                    <p style="margin: 0 0 10px;">
+                                                        %supportRequest form%
+                                                        <!-- Hours fixing request form: <a href="http://fixmyhours.oclinicals.com/" target="_blank" rel="noopener noreferrer">http://fixmyhours.oclinicals.com/</a><br>
+                                                        Notes: Fill out this form if you need to request a fixing hours due to 
+                                                        Teramind does not report the correct hours worked at the end of your shift. -->
+                                                    </p>
+                                                </li>
+                                                <li style="margin: 0 0 0 30px;" class="list-item-last">
+                                                    <p style="margin: 0 0 10px;">
+                                                        %hoursFixingForm%
+                                                        <!-- Issue report form: <a href="http://issuesreport.oclinicals.com" target="_blank" rel="noopener noreferrer">http://issuesreport.oclinicals.com</a><br>
+                                                        Notes: Fill out this form if you need to report a power outage, or problems 
+                                                        related to your Internet connection that prevent you from continuing to 
+                                                        work. -->
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td dir="ltr" height="100%" valign="top" width="100%" style="font-size:0; padding: 10px; background-color: #ffffff;">
+                                <div style="display:inline-block; margin: 0 -1px; max-width: 100%; min-width:100%; vertical-align:top;" class="stack-column">
+                                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td dir="ltr" style="font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow">
+                                                <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">
+                                                    Teramind Web
+                                                </h3>
+                                                <p style="margin: 0 0 10px 0;">
+                                                    %teramindWebUser% <br>
+                                                    %teramindWebPassword% <br>
+                                                    %teramindWebLink% <br>
+                                                    <br>
+                                                    %teramindWebNotes%
+                                                    <!-- Teramind user: cesar.montoya@oclinicals.com <br>
+                                                    Teramind password: oclinicals22 <br>
+                                                    <br>
+                                                    Notes: After accessing the Teramind website, download the Google 
+                                                    Authenticator app on your phone, and set up Teramind's two-factor 
+                                                    authentication.
+
+                                                    You will continue using Open Time Clock to clock in and out while you are 
+                                                    in the training stage. -->
+                                                </p>
+                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow" style="float:left;">
+                                                    <tr>
+                                                        <td class="button-td button-td-primary" style="border-radius: 4px;">
+                                                            <a class="button-a button-a-primary" href="%teramindWebLink%" style="background: #222222; font-family: sans-serif; font-size: 13px; line-height: 13px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;">Teramind Web</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td dir="ltr" style="font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow">
+                                                <hr size="1px" color="black" />
+                                                <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">
+                                                    Teramind Agent
+                                                </h3>
+                                                <p style="margin: 0 0 10px 0;">
+                                                    %teramindAgentNotes%
+                                                    <!-- Notes: Do not access this application until you are in production. Teramind 
+                                                    Agent credentials will be the same as Teramind Web. -->
+                                                </p>
+                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow" style="float:left;">
+                                                    <tr>
+                                                        <td class="button-td button-td-primary" style="border-radius: 4px;">
+                                                            <a class="button-a button-a-primary" href="teramindAgentLink" style="background: #222222; font-family: sans-serif; font-size: 13px; line-height: 13px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;">Teramind Agent</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td dir="ltr" style="font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow">
+                                                <hr size="1px" color="black" />
+                                                <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">
+                                                    ODB
+                                                </h3>
+                                                <ul style="padding: 0; margin: 0; list-style-type: disc;">
+                                                    <li style="margin:0 0 10px 30px;" class="list-item-first">
+                                                        <p style="margin: 0 0 10px;">
+                                                            <strong>STEP 1 (MICROSOFT)</strong> <br>
+                                                            User: %microsoftUser% <br>
+                                                            Password: %microsoftPassword% <br>
+                                                        </p>
+                                                    </li>
+                                                    <li style="margin:0 0 10px 30px;">
+                                                        <p style="margin: 0 0 10px;">
+                                                            <strong>STEP 2 (ODB WEBSITE)</strong> <br>
+                                                            User: %odbUser% <br>
+                                                            Password: %odbPassword% <br>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                                <p style="margin: 0 0 10px 0;">
+                                                    %odbNotes%
+                                                    <!-- Notes: Download the Microsoft Authenticator app on your phone, and set up 
+                                                    two-factor authentication for your Microsoft account.
+                                                    
+                                                    You will use Microsoft credentials (step 1) on the ODB website once every 
+                                                    45 days, while ODB credentials (step 2) every day. -->
+                                                </p>
+                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow" style="float:left;">
+                                                    <tr>
+                                                        <td class="button-td button-td-primary" style="border-radius: 4px;">
+                                                            <a class="button-a button-a-primary" href="%odbLink%" style="background: #222222; font-family: sans-serif; font-size: 13px; line-height: 13px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;">Website ODB</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td dir="ltr" style="font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow">
+                                                <hr size="1px" color="black" />
+                                                <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">
+                                                    Microsoft Teams
+                                                </h3>
+                                                <p style="margin: 0 0 10px 0;">
+                                                    %microsoftTeamsNotes%
+                                                    <!-- Notes: The clinic will provide you your Microsoft Teams credentials, 
+                                                    otherwise you will use your Microsoft credentials from Oclinicals. -->
+                                                </p>
+                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow" style="float:left;">
+                                                    <tr>
+                                                        <td class="button-td button-td-primary" style="border-radius: 4px;">
+                                                            <a class="button-a button-a-primary" href="%microsoftTeamsLink%" style="background: #222222; font-family: sans-serif; font-size: 13px; line-height: 13px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;">Microsoft Teams</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td dir="ltr" style="font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow">
+                                                <hr size="1px" color="black" />
+                                                <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">
+                                                    VPN
+                                                </h3>
+                                                <p style="margin: 0 0 10px 0;">
+                                                    %vpnNotes%
+                                                    <!-- Notes: The clinic will provide you your Microsoft Teams credentials, 
+                                                    otherwise you will use your Microsoft credentials from Oclinicals. -->
+                                                </p>
+                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow" style="float:left;">
+                                                    <tr>
+                                                        <td class="button-td button-td-primary" style="border-radius: 4px;">
+                                                            <a class="button-a button-a-primary" href="%vpnLink%" style="background: #222222; font-family: sans-serif; font-size: 13px; line-height: 13px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;">VPN</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td dir="ltr" style="font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow">
+                                                <hr size="1px" color="black" />
+                                                <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">
+                                                    Web System / Server
+                                                </h3>
+                                                <p style="margin: 0 0 10px 0;">
+                                                    %webSystemNotes%
+                                                    <!-- Notes: The VPN must be active when you use Ggastro. Someone from the 
+                                                    Oclinicals training team will send you your Ggastro credentials via Google 
+                                                    Chat in the next few days. -->
+                                                </p>
+                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow" style="float:left;">
+                                                    <tr>
+                                                        <td class="button-td button-td-primary" style="border-radius: 4px;">
+                                                            <a class="button-a button-a-primary" href="%webSystemLink%" style="background: #222222; font-family: sans-serif; font-size: 13px; line-height: 13px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;">Web System</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td dir="ltr" style="font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555; padding: 10px 10px 0; text-align: left;" class="center-on-narrow">
+                                                <hr size="1px" color="black" />
+                                                <h3 style="margin: 0 0 10px 0; font-family: sans-serif; font-size: 18px; line-height: 22px; color: #333333; font-weight: bold;">
+                                                    Phone System
+                                                </h3>
+                                                <p style="margin: 0 0 10px 0;">
+                                                    %phoneSystemNotes%
+                                                    <!-- Notes: This RingCentral is different than the version of RingCentral that 
+                                                    you currently use in your training. You will receive an email from 
+                                                    RingCentral to set up your account in the next few days. -->
+                                                </p>
+                                                <table role="presentation" cellspacing="0" cellpadding="0" border="0" class="center-on-narrow" style="float:left;">
+                                                    <tr>
+                                                        <td class="button-td button-td-primary" style="border-radius: 4px;">
+                                                            <a class="button-a button-a-primary" href="%phoneSystemLink%" style="background: #222222; font-family: sans-serif; font-size: 13px; line-height: 13px; text-decoration: none; padding: 13px 17px; color: #ffffff; display: block; border-radius: 4px;">Phone System</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width: 680px;">
+                        <tr>
+                            <td style="padding: 20px; font-family: sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #888888;">
+                                <webversion style="color: #cccccc; text-decoration: underline; font-weight: bold;">
+                                    Oclinicals Support Team
+                                </webversion>
+                                <br><br>
+                                Oclinicals<span class="unstyle-auto-detected-links">&bull; 19495 Biscanyne Blvd. #608 &bull; Aventura, FL 33180</span>
+                                <br><br>
+                                <a href="http://www.oclinicals.com" target="_blank" rel="noopener noreferrer"><unsubscribe style="color: #888888; text-decoration: underline;">www.oclinicals.com</unsubscribe></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </center>
+        </body>
+</html>
