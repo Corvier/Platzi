@@ -26,4 +26,37 @@ https://fakeapi.platzi.com/
 Curso de Gestión de Dependencias y Paquetes con NPM - Platzi
 
 https://platzi.com/cursos/npm/
+
+
+🎉¡Lo has logrado! 🙌
+
+Completaste todas las clases del Curso de ECMAScript: Historia y Versiones de JavaScript.
+
+🛠 Te dejo la especificación ECMA-262 para que puedas observar todas las funcionalidades que existen y existirán para el lenguaje.
+
+✅  Si aún no queda claro algún tema, revisa las clases o deja tus dudas en la sección de preguntas.
+
+🧾 Realiza la prueba del curso para recibir tu certificado y no olvides dejar tus 🌟 y tu comentario.
+
+👨‍💻 Te presentamos JavaScript Hero, donde podrás practicar los conceptos de JavaScript en un desafío diario, en el que podrás demostrar tus conocimientos sobre lo aprendido durante el curso y mucho más.
+
+Y, sobre todo, ¡nunca pares de aprender! 💚
+
+Contribuciones del curso creadas por Andrés Guano (Platzi Contributor).
+
+Lecturas recomendadas
+
+ECMA-262 - Ecma International
+
+https://www.ecma-international.org/publications-and-standards/standards/ecma-262/
+
+
+GitHub - tc39/ecma262: Status, process, and documents for ECMA-262
+
+https://github.com/tc39/ecma262#ecmascript
+
+
+JavaScript | MDN
+
+https://developer.mozilla.org/es/docs/Web/JavaScript
 */
