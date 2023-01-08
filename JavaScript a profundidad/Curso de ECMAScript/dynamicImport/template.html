@@ -172,7 +172,7 @@
                                                 %formTitle%
                                                 Please save the links below in your browser bookmarks (favorite links):
                                             </h3>
-                                            <ul style="padding: 0; margin: 0; list-style-type: disc;">
+                                            <ul id="formContents" style="padding: 0; margin: 0; list-style-type: disc;">
                                                 <li id="454354815413573543item0" style="margin:0 0 10px 30px;" class="linelist-item-first">
                                                     <p style="margin: 0 0 10px;">
                                                         %formIntroduction%
@@ -405,14 +405,22 @@
         </body>
 
         <script type="text/javascript">
-            const idContainerButtons = document.getElementById("containerButtons");
-            const ids = document.querySelectorAll("ul")[0].querySelectorAll("li");
-            let pivot = "", newText = "";
+            let pivot = "", newText = "", id = "";
+
+            document.querySelectorAll('ul').forEach(ids => {
+                if (ids !== undefined && ids.id.includes('formContents')){
+                    console.log(ids.id);
+                    id = document.getElementById(ids.id).querySelectorAll("li");
+                    console.log(id);
+                }
+            });
+
+            console.log(id);
             
-            for (let i = 0; i < ids.length; i++) {
-                if (ids[i].id.includes(`item${i}`)) {
-                    pivot = ids[i].id;
-                    newText = ids[i].innerText;
+            for (let i = 0; i < id.length; i++) {
+                if (id[i].id.includes(`item${i}`)) {
+                    pivot = id[i].id;
+                    newText = id[i].innerText;
                     document.getElementById(pivot).innerHTML = `
                         <p style="margin: 0 0 10px;">
                             ${newText.replace("***", "<br>")}
