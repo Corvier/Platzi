@@ -173,26 +173,25 @@
                                                 Please save the links below in your browser bookmarks (favorite links):
                                             </h3>
                                             <ul style="padding: 0; margin: 0; list-style-type: disc;">
-                                                <li style="margin:0 0 10px 30px;" class="list-item-first">
+                                                <li id="454354815413573543item0" style="margin:0 0 10px 30px;" class="linelist-item-first">
                                                     <p style="margin: 0 0 10px;">
                                                         %formIntroduction%
-                                                        Support request form: <a href="http://support.oclinicals.com/" target="_blank" rel="noopener noreferrer">http://support.oclinicals.com/</a><br>
+                                                        Support request form: <a href="http://support.oclinicals.com/" target="_blank" rel="noopener noreferrer">http://support.oclinicals.com/</a>***
                                                         Notes: Fill out this form if you need help from Oclinicals IT to 
                                                         troubleshoot an issue on your computer.
                                                     </p>
                                                 </li>
-                                                <li style="margin:0 0 10px 30px;">
+                                                <li id="454354815413573543item1" style="margin:0 0 10px 30px;">
                                                     <p style="margin: 0 0 10px;">
                                                         %supportRequest form%
-                                                        Hours fixing request form: <a href="http://fixmyhours.oclinicals.com/" target="_blank" rel="noopener noreferrer">http://fixmyhours.oclinicals.com/</a><br>
-                                                        Notes: Fill out this form if you need to request a fixing hours due to 
+                                                        Hours fixing request form: <a href="http://fixmyhours.oclinicals.com/" target="_blank" rel="noopener noreferrer">http://fixmyhours.oclinicals.com/</a>***Notes: Fill out this form if you need to request a fixing hours due to 
                                                         Teramind does not report the correct hours worked at the end of your shift.
                                                     </p>
                                                 </li>
-                                                <li style="margin: 0 0 0 30px;" class="list-item-last">
+                                                <li id="454354815413573543item2" style="margin: 0 0 0 30px;" class="list-item-last">
                                                     <p style="margin: 0 0 10px;">
                                                         %hoursFixingForm%
-                                                        Issue report form: <a href="http://issuesreport.oclinicals.com" target="_blank" rel="noopener noreferrer">http://issuesreport.oclinicals.com</a><br>
+                                                        Issue report form: <a href="http://issuesreport.oclinicals.com" target="_blank" rel="noopener noreferrer">http://issuesreport.oclinicals.com</a>***
                                                         Notes: Fill out this form if you need to report a power outage, or problems 
                                                         related to your Internet connection that prevent you from continuing to 
                                                         work.
@@ -407,7 +406,21 @@
 
         <script type="text/javascript">
             const idContainerButtons = document.getElementById("containerButtons");
-            console.log("🚀 ~ file: template.html:410 ~ idContainerButtons", idContainerButtons)
+            const ids = document.querySelectorAll("ul")[0].querySelectorAll("li");
+            let pivot = "", newText = "";
+            
+            for (let i = 0; i < ids.length; i++) {
+                if (ids[i].id.includes(`item${i}`)) {
+                    pivot = ids[i].id;
+                    newText = ids[i].innerText;
+                    document.getElementById(pivot).innerHTML = `
+                        <p style="margin: 0 0 10px;">
+                            ${newText.replace("***", "<br>")}
+                        </p>
+                    `;
+                }
+            }
+
             const webSystemTemplate = {}
 
             for (let i=0; i<4; i++) {
@@ -420,7 +433,5 @@
                     </tr>`
                 ;
             }
-
-            console.log("🚀 ~ file: main.js:2 ~ webSystemTemplate", webSystemTemplate)
         </script>
 </html>
