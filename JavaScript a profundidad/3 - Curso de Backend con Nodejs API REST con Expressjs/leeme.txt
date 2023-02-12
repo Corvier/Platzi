@@ -25,3 +25,10 @@ es una parte integral del recurso, entonces un PUT lo sobrescribirá naturalment
 (ya que sobrescribe todo), pero no necesariamente para .PATCH
 
 PATCH (como POST) puede tener efectos secundarios sobre otros recursos. PATCH - HTTP | MDN
+
+*********************************************************************************************************
+
+¿Que es un endpoints?
+Los endpoints son las URLs de un API o un backend que responden a una petición.
+Los mismos entrypoints tienen que calzar con un endpoint para existir.
+Algo debe responder para que se renderice un sitio con sentido para el visitante.
