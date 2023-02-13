@@ -1,4 +1,5 @@
 const express = require('express');
+const faker = require('faker');
 const app = express();
 
 // Settings
@@ -12,20 +13,27 @@ app.get('/nueva-ruta', (req, res) => {
 });
 
 app.get('/productos', (req, res) => {
-    res.json([
-        {
-            id: 1,
-            name: 'Producto 1',
-            price: 1000,
-        },
-        {
-            id: 2,
-            name: 'Producto 2',
-            price: 2000,
-        }
-    ]);
+    const productos = [];
+    const { size } = req.query;
+    const limit = size || 10;
+
+    for (let index = 0; index < limit; index++) {
+        productos.push({
+            id: (index + Date.now()),
+            name: faker.commerce.productName(),
+            price: parseInt(faker.commerce.price(), 10),
+            image: faker.image.imageUrl()
+        })
+    }
+    res.json(productos);
 });
 
+// Notification: Para evitar que una ruta choque, se pone primero la ruta no dinámica.
+app.get('/productos/filtro', (req, res) => {
+    res.send('Yo soy un filter');
+});
+
+// Y luego las rutas dinámicas, asi sabe cual atender correctamente y evita choques.
 app.get('/productos/:id', (req, res) => {
     const id = req.params.id;
     res.json({
@@ -43,6 +51,21 @@ app.get('/categorias/:categoryId/productos/:productId', (req, res) => {
         name: 'Producto ' + productId,
         price: 2000
     })
+});
+
+app.get('/usuarios', (req, res) => {
+    const { limit, offset } = req.query;
+
+    if (limit && offset) {
+        res.json({
+            limit,
+            offset
+        });
+    } else {
+        res.json({
+            error: "Debe definir un limit y offset"
+        })
+    }
 });
 
 // Starting the server
