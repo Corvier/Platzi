@@ -1,6 +1,10 @@
 const express = require('express');
-const faker = require('faker');
+// const faker = require('faker'); // Faker solo esta funcionando en la version "faker": "^5.5.3" npm i faker@5.5.3 -S
+const { faker } = require('@faker-js/faker');
+const os = require('os');
+
 const app = express();
+const ip = os.networkInterfaces().Ethernet[1].address;
 
 // Settings
 app.set('port', process.env.PORT || 3000);
@@ -69,4 +73,4 @@ app.get('/usuarios', (req, res) => {
 });
 
 // Starting the server
-app.listen(app.get("port"), () => { console.clear(); console.log(`Server is Running on port http://localhost:${app.get("port")}`); });
+app.listen(app.get("port"), () => { console.clear(); console.log(ip); console.log(`Server is Running on port http://localhost:${app.get("port")}`); });
