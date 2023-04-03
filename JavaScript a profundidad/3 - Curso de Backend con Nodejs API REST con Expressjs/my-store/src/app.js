@@ -9,7 +9,7 @@ const ip = os.networkInterfaces().Ethernet[1].address;
 const whitelist = ['http://localhost/8080'];
 const origins = {
     origin: (origin, callback) => {
-        if (whitelist.includes(origin)) {
+        if (whitelist.includes(origin) || !origin) {
             callback(null, true);
         } else {
             callback(new Error('Access denied!'));
