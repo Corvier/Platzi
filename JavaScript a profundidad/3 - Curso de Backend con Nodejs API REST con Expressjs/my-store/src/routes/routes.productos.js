@@ -1,22 +1,13 @@
 // const faker = require('faker'); // Faker solo esta funcionando en la version "faker": "^5.5.3" npm i faker@5.5.3 -S
+// const { faker } = require('@faker-js/faker');
 const express = require('express');
-const { faker } = require('@faker-js/faker');
+const ProductosService = require('./../services/productos.services');
 const router = express.Router();
+const service = new ProductosService();
 
 router.get('/', (req, res) => {
-    const productos = [];
-    const { size } = req.query;
-    const limit = size || 10;
-
-    for (let index = 0; index < limit; index++) {
-        productos.push({
-            id: (index + Date.now()),
-            name: faker.commerce.productName(),
-            price: parseInt(faker.commerce.price(), 10),
-            image: faker.image.imageUrl()
-        })
-    }
-    res.json(productos);
+    const productos = service.find();
+    res.status(200).json(productos);
 });
 
 // Notification: Para evitar que una ruta choque, se pone primero la ruta no dinámica.
@@ -27,18 +18,21 @@ router.get('/filtro', (req, res) => {
 // Y luego las rutas dinámicas, asi sabe cual atender correctamente y evita choques.
 router.get('/:id', (req, res) => {
     const id = req.params.id;
+    const producto = service.findOne(id);
 
-    if (id === '999') {
-        res.status(404).json({
-            message: "Not Found"
-        });
-    } else {
-        res.status(200).json({
-            id: id,
-            name: 'Producto ' + id,
-            price: 2000
-        });
-    }
+    res.status(200).json({producto: producto})
+
+    // if (id === '999') {
+    //     res.status(404).json({
+    //         message: "Not Found"
+    //     });
+    // } else {
+    //     res.status(200).json({
+    //         id: id,
+    //         name: 'Producto ' + id,
+    //         price: 2000
+    //     });
+    // }
 });
 
 // TODO: El método POST se usa para enviar información al servidor (por lo general de tipo JSON).
