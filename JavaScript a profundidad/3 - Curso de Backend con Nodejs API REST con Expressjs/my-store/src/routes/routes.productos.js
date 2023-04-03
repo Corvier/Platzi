@@ -34,8 +34,33 @@ router.get('/:id', (req, res) => {
     })
 });
 
+// TODO: El método POST se usa para enviar información al servidor (por lo general de tipo JSON).
 router.post('/', (req, res) => {
     res.json({data: req.body});
+});
+
+/*
+    TODO ---
+    TODO title: PATCH
+    TODO El **método HTTP PATCH** aplica modificaciones parciales a un recurso.
+    TODO El método HTTP PUT únicamente permite reemplazar completamente un documento.
+*/
+
+router.patch('/update/:id', (req, res) => {
+    const id = req.params.id;
+    res.json({
+        message: "Update",
+        data: req.body,
+        id: id
+    });
+});
+
+router.delete('/delete/:id', (req, res) => {
+    const id = req.params.id;
+    res.json({
+        message: "Deleted",
+        id: id
+    });
 });
 
 module.exports = router;
