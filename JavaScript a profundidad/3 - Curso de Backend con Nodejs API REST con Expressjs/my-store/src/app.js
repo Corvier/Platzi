@@ -1,6 +1,6 @@
 const express = require('express');
 const { routerApp } = require('./routes/routes.main.js');
-const { logErrors, errorHandler } = require('./middlewares/error.handler');
+const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler');
 const os = require('os');
 
 const app = express();
@@ -21,6 +21,7 @@ routerApp(app);
 // Middleware
 app.use(express.json());
 app.use(logErrors);
+app.use(boomErrorHandler);
 app.use(errorHandler);
 
 // Starting the server

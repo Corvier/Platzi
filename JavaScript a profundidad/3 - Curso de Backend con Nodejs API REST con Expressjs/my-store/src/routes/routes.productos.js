@@ -1,5 +1,5 @@
 // const faker = require('faker'); // Faker solo esta funcionando en la version "faker": "^5.5.3" npm i faker@5.5.3 -S
-// const { faker } = require('@faker-js/faker');
+// const { faker } = require('@faker-js/faker'); / npm i @hapi/boom
 const express = require('express');
 const ProductosService = require('./../services/productos.services');
 const router = express.Router();
@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
     TODO El **método HTTP PATCH** aplica modificaciones parciales a un recurso.
     TODO El método HTTP PUT únicamente permite reemplazar completamente un documento.
 */
-router.patch('/update/:id', async (req, res) => {
+router.patch('/update/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
         const body = req.body;
@@ -62,7 +62,8 @@ router.patch('/update/:id', async (req, res) => {
     
         res.status(201).json({ product });
     } catch (error) {
-        res.status(404).json({ message: error.message })
+        // res.status(404).json({ message: error.message });
+        next(error);
     }
     // res.status(200).json({ product });
     // res.status(200).json({
