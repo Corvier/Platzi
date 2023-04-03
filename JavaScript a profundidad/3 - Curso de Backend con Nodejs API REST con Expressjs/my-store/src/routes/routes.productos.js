@@ -27,11 +27,18 @@ router.get('/filtro', (req, res) => {
 // Y luego las rutas dinámicas, asi sabe cual atender correctamente y evita choques.
 router.get('/:id', (req, res) => {
     const id = req.params.id;
-    res.json({
-        id: id,
-        name: 'Producto ' + id,
-        price: 2000
-    })
+
+    if (id === '999') {
+        res.status(404).json({
+            message: "Not Found"
+        });
+    } else {
+        res.status(200).json({
+            id: id,
+            name: 'Producto ' + id,
+            price: 2000
+        });
+    }
 });
 
 // TODO: El método POST se usa para enviar información al servidor (por lo general de tipo JSON).
