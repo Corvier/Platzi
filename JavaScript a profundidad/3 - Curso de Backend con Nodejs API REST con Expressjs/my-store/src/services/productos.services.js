@@ -20,8 +20,14 @@ class ProductosService {
         }
     }
 
-    create() {
+    create(data) {
+        const newProduct = {
+            id: faker.datatype.uuid(),
+            ...data
+        }
 
+        this.productos.push(newProduct);
+        return newProduct;
     }
 
     find() {
@@ -32,12 +38,30 @@ class ProductosService {
         return this.productos.find(item => item.id === id);
     }
 
-    update() {
+    update(id, changes) {
+        const index = this.productos.findIndex(item => item.id === id);
 
+        if (index === -1) {
+            throw new Error('product not found');
+        }
+
+        const producto = this.productos[index];
+        this.productos[index] = {
+            ...producto,
+            ...changes
+        };
+        return this.productos[index];
     }
 
-    deleted() {
+    deleted(id) {
+        const index = this.productos.findIndex(item => item.id === id);
 
+        if (index === -1) {
+            throw new Error('product not found');
+        }
+
+        this.productos.splice(index, 1);
+        return { message: "deleted success!", id: id }
     }
 }
 
