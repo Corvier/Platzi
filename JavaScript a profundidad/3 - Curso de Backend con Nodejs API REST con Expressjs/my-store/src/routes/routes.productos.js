@@ -2,6 +2,8 @@
 // const { faker } = require('@faker-js/faker'); / npm i @hapi/boom
 const express = require('express');
 const ProductosService = require('./../services/productos.services');
+const validatorHandler = require('./../middlewares/validator.handler');
+const { createProductSchema, updateProductSchema, getProductSchema } = require('./../schemas/productos.data.transact.object');
 const router = express.Router();
 const service = new ProductosService();
 
@@ -16,7 +18,7 @@ router.get('/filtro', async (req, res) => {
 });
 
 // Y luego las rutas dinámicas, asi sabe cual atender correctamente y evita choques.
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', validatorHandler(getProductSchema, 'params'), async (req, res, next) => {
     try {
         const id = req.params.id;
         const producto = await service.findOne(id);
@@ -41,8 +43,9 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // TODO: El método POST se usa para enviar información al servidor (por lo general de tipo JSON).
-router.post('/', async (req, res) => {
+router.post('/', validatorHandler(createProductSchema, 'body'), async (req, res) => {
     const body = req.body;
+    console.log("BODY POST", body)
     const newProduct = await service.create(body);
 
     res.status(200).json({newProduct});
@@ -54,7 +57,7 @@ router.post('/', async (req, res) => {
     TODO El **método HTTP PATCH** aplica modificaciones parciales a un recurso.
     TODO El método HTTP PUT únicamente permite reemplazar completamente un documento.
 */
-router.patch('/update/:id', async (req, res, next) => {
+router.patch('/update/:id', validatorHandler(getProductSchema, 'params'), validatorHandler(updateProductSchema, 'body'), async (req, res, next) => {
     try {
         const id = req.params.id;
         const body = req.body;

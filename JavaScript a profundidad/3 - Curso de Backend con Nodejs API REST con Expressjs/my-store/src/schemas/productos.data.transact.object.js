@@ -5,8 +5,8 @@ const name = joi.string().min(3).max(30);
 const price = joi.number().integer().min(10);
 
 const createProductSchema = joi.object({
-    name: name.required,
-    price: price.required
+    name: name.required(),
+    price: price.required()
 })
 
 const updateProductSchema = joi.object({
@@ -15,7 +15,7 @@ const updateProductSchema = joi.object({
 })
 
 const getProductSchema = joi.object({
-    id: id.required
+    id: id.required()
 })
 
 module.exports = { createProductSchema, updateProductSchema, getProductSchema };
