@@ -41,6 +41,7 @@ class ProductosService {
     }
 
     async findOne(id) {
+        const name = this.getTotal(); // ! Este es un error forzado
         return this.productos.find(item => item.id === id);
     }
 

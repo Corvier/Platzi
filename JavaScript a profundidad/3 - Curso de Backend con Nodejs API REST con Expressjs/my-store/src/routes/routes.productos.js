@@ -16,11 +16,16 @@ router.get('/filtro', async (req, res) => {
 });
 
 // Y luego las rutas dinámicas, asi sabe cual atender correctamente y evita choques.
-router.get('/:id', async (req, res) => {
-    const id = req.params.id;
-    const producto = service.findOne(id);
-
-    res.status(200).json({producto: producto})
+router.get('/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        const producto = await service.findOne(id);
+    
+        res.status(200).json({ producto: producto })
+        
+    } catch (error) {
+        next(error);
+    }
 
     // if (id === '999') {
     //     res.status(404).json({
