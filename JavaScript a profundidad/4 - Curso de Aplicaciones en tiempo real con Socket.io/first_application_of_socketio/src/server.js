@@ -43,5 +43,8 @@ io.on('connection', (socket) => {
     //     console.log(`Socket ${socket.id} disconnected`);
     // });
 
-    socket.conn.once('upgrade', () => console.log('Hemos pasado de HTTP Long-Polling a', socket.conn.transport.name));
+    // Para saber cuando cambia la conexión del socket
+    socket.conn.once('upgrade', () => { 
+        console.log('Hemos pasado de HTTP Long-Polling a', socket.conn.transport.name);
+    });
 });
