@@ -44,7 +44,17 @@ io.on('connection', (socket) => {
     // });
 
     // Para saber cuando cambia la conexión del socket
-    socket.conn.once('upgrade', () => { 
-        console.log('Hemos pasado de HTTP Long-Polling a', socket.conn.transport.name);
-    });
+    // socket.conn.once('upgrade', () => { 
+    //     console.log('Hemos pasado de HTTP Long-Polling a', socket.conn.transport.name);
+    // });
+
+
+    // **************************************** EMISIÓN DE EVENTOS ******************************************** //
+    // Evento para enviar p emitir datos al cliente.
+    socket.emit('server:welcome', 'Bienvenido, ahora estas conectado 😎');
+
+    // Evento para recibir datos del cliente y mostrarlos por consola.
+    socket.on('client:emit', (data) => console.log(data));
+
+    io.emit('server:everyone', `${socket.id} se ha conectado`);
 });
