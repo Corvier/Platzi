@@ -33,7 +33,7 @@ httpServer.listen(app.get('port'), () => {
 // Manejo de conexiones websocket
 io.on('connection', (socket) => {
     // console.log(socket);
-    // console.log("ID del socket conectado:", socket.id);
+    console.log("ID del socket conectado:", socket.id);
 
     // Para saber cuantos clientes están conectados
     // console.log("Clientes conectados:", io.engine.clientsCount);
@@ -42,4 +42,6 @@ io.on('connection', (socket) => {
     // socket.on('disconnect', () => {
     //     console.log(`Socket ${socket.id} disconnected`);
     // });
+
+    socket.conn.once('upgrade', () => console.log('Hemos pasado de HTTP Long-Polling a', socket.conn.transport.name));
 });
