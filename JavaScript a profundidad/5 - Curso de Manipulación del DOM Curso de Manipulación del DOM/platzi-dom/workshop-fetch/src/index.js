@@ -1,11 +1,59 @@
+// const url_base = "https://platzi-avo.vercel.app";
+
+// const mountNode = document.getElementById("js-mount");
+
+// // WEB API
+// // Conectarnos al servidor
+// window
+//   .fetch(`${url_base}/api/avo`)
+//   // Procesar la respuesta y convertirla a JSON
+//   .then(res => res.json())
+//   // JSON => Data => Rendering la información de los elements en el browser
+//   .then(responseJson => {
+//     console.table(responseJson.data);
+
+//     const items = [];
+
+//     responseJson.data.forEach(item => {
+//       // crear imagen
+//       const image = document.createElement('img');
+//       image.src = `${url_base}/${item.image}`;
+
+//       // crear titulo
+//       const title = document.createElement('h2');
+//       title.textContent = item.name;
+
+//       // crear precio
+//       const price = document.createElement('div');
+//       price.textContent = `${item.price}$`;
+
+//       const container = document.createElement('div');
+//       container.append(image, title, price);
+//       items.push(container);
+//     });
+
+//     mountNode.append(...items);
+//   });
+
+
+
+
+
 const baseUrl = "https://platzi-avo.vercel.app";
 const mountNode = document.getElementById("js-mount");
 
-const formatPrice = (price) =>
-  new Intl.NumberFormat("en-EN", {
+// const formatPrice = (price) =>
+//   new Intl.NumberFormat("en-EN", {
+//     style: "currency",
+//     currency: "USD",
+//   }).format(price);
+
+const formatPrice = (price) => {
+  return window.Intl.NumberFormat("en-EN", {
     style: "currency",
-    currency: "USD",
+    currency: "EUR",
   }).format(price);
+}
 
 !(async function () {
   const response = await fetch(`${baseUrl}/api/avo`);
