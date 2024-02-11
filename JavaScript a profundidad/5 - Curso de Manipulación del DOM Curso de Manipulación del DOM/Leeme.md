@@ -205,7 +205,6 @@ inputName.value = "Fernando"
 
 **RESUMEN:** Las propiedades de los elementos serán aquellas que mayormente se modificarán. La diferencia entre un atributo y una propiedad es que el atributo para iniciar el HTML y DOM, son constantes mientras que las propiedades vienen del DOM y se pueden ir cambiando
 
-
 ## ❌Eliminar nodos
 
 #### Apuntes
@@ -234,7 +233,6 @@ inputName.value = "Fernando"
    ```javascript
    padre.replaceChild(nuevoNodo, aRemplazar)
    ```
-
 
 También debemos aprender a eliminar nodos dentro del HTML, si podemos agregarlos... ¿Por qué no podríamos eliminarlos? ¡Claro que se puede!, y para ello, JavaScript nos ofrece 3 formas: .
 
@@ -279,9 +277,7 @@ node.textContent = "Un texto cualquiera"
 parent.replaceChild(node, toReplace)
 ```
 
-
 **RESUMEN:** Podemos eliminar nodos con diferentes métodos que nos provee el DOM como ser  **removeChild** , el cual necesita la referencia del padre a eliminar y del nodo que se eliminara, **remove** el cual se encarga de eliminar el nodo solo con la referencia deseada a borrar y finalmente **replaceChild** que nos ayuda remplazar un elemento con las referencias del padre, el nuevo nodo y el elemento a remplazar
-
 
 ## ❓ ¿Qué es el Spread Operator?
 
@@ -308,3 +304,62 @@ funcionQueRecibeTresParametros(arregloDeParametros[0], arregloDeParametros[1], a
 ```
 
 Esto es muy útil cuando tenemos demasiados valores, recuerda, mientras menos modifiques el DOM, más eficiente será tu programa, y recordemos que tenemos a `append()` que nos permite insertar múltiples elementos en el DOM en una sola llamada, ¡aprovechémoslo! **Dato curioso:** En algunos frameworks de JavaScript como Vue, existe una cosa llamada el  **Virtual DOM** , no es más que un objeto JavaScript que simula al DOM real, al menos en Vue, esto tiene un proxy que está observando por cambios en ese Virtual DOM para reaccionar y renderizar solo una pequeña parte en el DOM (en lugar de reescribirlo completamente)
+
+
+# Eventos
+
+## Event Delegation
+
+La delegación de eventos es básicamente un contenedor padre que le pasa el evento a todos sus hijos (en realidad no se los está pasando, sino que el contenedor padre sigue estando presente en todos los hijos, es por eso que cuando clicamos a un hijo el evento es disárado). . Entendiendo esto, cuando obtenemos el target podemos saber cuál elemento hijo del padre fue clicado, por tanto, con una simple condicional puede ver si el elemento clicado es el que yo quiero. . **Ojo:** Eso no significa que el evento se quite de los demás elementos hijos, si tu clicas cualquier otro elemento hijo el evento se va a disparar sí o sí, pero lo que sucede es que la condición del tarjet no se cumple, por eso no hace nada. . Y sabiendo esto, puedes hacer cosas chulas como crear funciones que escuchen eventos dinámicamente, una característica de los eventos es que solo se le aplican a los elementos que están desde el inicio, pero si tu agregas otro nodo desde JavaScript  **los eventos no se van a escuchar para ese nuevo nodo** . Entonces, una técnica que se suele usar es escuchar al padre (o en ocasiones a todo el document) y cada vez que el evento ocurra buscar a todos sus hijos que coincidan con el selector al que queremos aplicarle el evento, de esta forma no importa si los nodos se añaden posteriormente desde JavaScript, el evento será escuchado pues JavaScript directamente irá a buscar todos los nodos hijos que cumplan con dicho selector, por ejemplo: **HTML**
+
+```html
+<div id="divPadre">
+    <div class="div">
+        Hola
+    </div>
+</div>
+```
+
+**JavaScript**
+
+```javascript
+document.querySelector(".div").addEventListener("click", () => {
+    // Hace algo
+})
+```
+
+En este caso, si al div padre yo le añadiera desde JavaScript otro elemento con la clase div, el evento **NO** funcionaría:
+
+```javascript
+const nuevoDiv = document.createElement("div");
+nuevoDiv.className = "div";
+nuevoDiv.textContent = "Nuevo div"
+divPadre.append(nuevoDiv)
+```
+
+Sin emabrgo, al usar la delegación de eventos, puedo escuchar al padre y buscar al hijo que me interesa:
+
+```javascript
+nuevoDiv.addEventListener("click", event => {
+
+    if(event.target.classList.contains("div")) {
+        // Código
+    }
+
+})
+```
+
+De esta forma, no importa cuantos elementos nuevos agregues al padre desde JavaScript, esto siempre va a funcionar. . Ahora, si quieres hacer algo más pro, puedes crear una función en el cual tu le pases un selector en específico para usar dentro del div, así solo tienes que llamar a esa función y pasarle el selector de tal manera que se quede escuchando por cualquier elemento nuevo que sea agregado, algo así:
+
+```javascript
+eventAll("click", parentElement, elementToListen, () => {
+    // Has algo
+})
+```
+
+Una función de ese tipo sería muy útil, porque así puedo mantener escuchando cada elemento, no importa que se agregue después con JavaScript, y sí, yo ya la cree, de hecho hice una mini librería para escuchar eventos partiendo de esta base, pueden indagar el código aquí: . [events.js](https://github.com/RetaxMaster/Funciones-para-JavaScript/blob/master/js/events.js) . Claro, este código está desactualizado porque tiene un pequeño bug y hay ciertos elementos con los que no funciona, pero para eso podemos usar un `MutationObserver` que mire cuando el padre haya sido modificado (se le haya agregado un hijo nuevo) y a ese hijo aplicarle el evento, yo ya lo hice pero se los dejo de tarea si tienen cursiodidad sobre eso 👀
+
+
+## Intersection Observer
+
+Con el `IntersectionObserver` podemos decirle a JavaScript que observe un objeto cuando está dentro de la pantalla (o cuando sale de esta), en el [Curso Profesional de JavaScript](https://platzi.com/clases/javascript-profesional/) se habla sobre esto, específicamente en la clase de Intersection Observer, les dejo el link por si quieren profundizar en ello: . [https://platzi.com/clases/1642-javascript-profesional/22175-intersectionobserver/](https://platzi.com/clases/1642-javascript-profesional/22175-intersectionobserver/) . También les dejo el link de la documentación de esto: . [https://developer.mozilla.org/es/docs/Web/API/Intersection_Observer_API](https://developer.mozilla.org/es/docs/Web/API/Intersection_Observer_API) . Y también dejo el código de esta clase :D . [Adición del Intersection Observer](https://github.com/RetaxMaster/curso-manipulacion-dom/tree/356daf692065f9390688ab40c12a81e0d75c92ac/workshop-2)
